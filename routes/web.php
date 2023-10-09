@@ -4,6 +4,9 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BonafideController;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
@@ -25,33 +28,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+    //display all students
+	Route::get('dashboard', [StudentController::class, 'index'])->name('dashboard');
+    //display students for bonafide
+    Route::get('/bonafide', [BonafideController::class, 'allbona']);
+    //display students for transfer certificate
+	Route::get('transfer', [TransferController::class, 'alltc']);
 
-	Route::get('billing', function () {
-		return view('billing');
-	})->name('billing');
-
-	Route::get('profile', function () {
-		return view('profile');
-	})->name('profile');
-
-	Route::get('rtl', function () {
-		return view('rtl');
-	})->name('rtl');
-
-	Route::get('user-management', function () {
-		return view('laravel-examples/user-management');
-	})->name('user-management');
-
-	Route::get('tables', function () {
-		return view('tables');
-	})->name('tables');
-
-    Route::get('virtual-reality', function () {
-		return view('virtual-reality');
-	})->name('virtual-reality');
 
     Route::get('static-sign-in', function () {
 		return view('static-sign-in');
@@ -62,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('sign-up');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
+
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');

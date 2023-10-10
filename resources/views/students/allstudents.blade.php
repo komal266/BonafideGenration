@@ -12,7 +12,11 @@
                         <div>
                             <h5 class="mb-0">All Students</h5>
                         </div>
-                        <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New Student</a>
+                        <form method="POST" action="{{ route('stu_form') }}" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">+ New Student</button>
+                        </form>
+
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -27,7 +31,10 @@
                                         Name
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Email
+                                        Class
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Div
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Action

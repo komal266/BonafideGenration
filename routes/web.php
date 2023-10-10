@@ -29,12 +29,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
     //display all students
-	Route::get('dashboard', [StudentController::class, 'index'])->name('dashboard');
+	Route::get('students', [StudentController::class, 'index'])->name('students');
     //display students for bonafide
     Route::get('/bonafide', [BonafideController::class, 'allbona']);
     //display students for transfer certificate
 	Route::get('transfer', [TransferController::class, 'alltc']);
 
+    Route::post('stuform',[StudentController::class,'form'])->name('stu_form');
 
     Route::get('static-sign-in', function () {
 		return view('static-sign-in');
@@ -48,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
-		return view('dashboard');
+		return view('students');
 	})->name('sign-up');
 });
 

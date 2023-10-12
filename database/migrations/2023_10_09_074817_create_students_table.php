@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('religion');
             $table->string('subcaste')->nullable();
             $table->integer('gr_no');
-            $table->integer('lc_no');
+            $table->integer('lc_no')->nullable();
+            $table->integer('bona_no')->nullable();
             $table->string('aadhar_no')->nullable();
             $table->string('father_name');
             $table->string('mother_name');

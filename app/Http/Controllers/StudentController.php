@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class StudentController extends Controller
 {
@@ -10,7 +13,7 @@ class StudentController extends Controller
     {
         try
         {
-        $student=Student::all();
+        $student=Student::paginate(15);
         return view('students.allstudents', compact('student'));
         }
         catch(Exception $e){

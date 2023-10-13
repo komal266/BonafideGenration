@@ -1,3 +1,6 @@
+@extends('layouts.user_type.auth')
+
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +67,7 @@ input[type="submit"]:hover {
 }
 
 </style>
-   
+
 </head>
 <body>
     <h1>Student Information Form</h1>
@@ -130,3 +133,4 @@ input[type="submit"]:hover {
     </form>
 </body>
 </html>
+@endsection

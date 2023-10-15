@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +99,7 @@
 }
 
 .text-primary {
-    
+
     font-weight: bold;
     margin-top: 10px; /* Adjust the margin to move it slightly down */
 }
@@ -108,10 +108,10 @@
 }
 
 
-	
+
 </style>
 
-</head> 
+</head>
 <div class="upper-container">
     <div class="left-slot">
         <img src="LOGO.png" width="160px" height="150px">
@@ -119,7 +119,7 @@
     <div class="vertical-line"></div> <!-- Vertical line after the first slot -->
     <div class="middle-slot">
         <p><strong>Sanjivani Rural Education Society's</strong></p>
-        <p style="font-family: Algerian; font-size: 30px; color: red;"><strong>Sanjivani Academy</strong></p>
+        <p style="font-family: Algerian; font-size: 30px; color: red;"><strong>Student Management System</strong></p>
         <p><strong>Khirdi Ganesh, Kopargaon-423 601, Dist. Ahmednagar (Maharashtra)</strong></p>
         <p><strong>Phone: 9075900900, 8975966900</strong></p>
         <p><strong>Email: sanjivanicbse@gmail.com</strong></p>
@@ -162,11 +162,11 @@
         (No change in any entry in any entry is to be made except by the authority issuing the certificate)
     </p>
 	<br>
-	
+
 </div>
 
 
-    
+
     <div class="info">
     <strong>&emsp;1)&emsp;Students ID &emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:</strong>
        <span style="width: 100%;"> &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  {{ }}  </span>
@@ -222,7 +222,7 @@
 
 <hr style="border: 2px solid black;">
 
-    
+
     <div class="container text-center">
         <strong>Certified that above Mentioned information is True According to the School General Register.</strong>
     </div>
@@ -270,7 +270,7 @@
     function printPage() {
         // Hide the print button before printing
         document.getElementById("printButton").style.display = "none";
-        
+
         // Trigger the browser's print functionality
         window.print();
 

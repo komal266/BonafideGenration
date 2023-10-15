@@ -122,7 +122,7 @@ $(document).ready(function() {
                                     <td class="text-center">{{ $student->class }}</td>
                                     <td class="text-center">{{ $student->div }}</td>
                                     <td class="text-center">
-                                        <form action="post"></form>
+                                        <form action="post">View</form>
                                     </td>
                                 </tr>
                                 @endforeach

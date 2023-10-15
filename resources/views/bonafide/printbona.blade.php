@@ -10,7 +10,7 @@
 
 <body>
     <div class="text-blue-900">
-        <div class="font-serif text-xl text-center font-extrabold">Sanjivani Academy</div>
+        <div class="font-serif text-xl text-center font-extrabold">Student Management System</div>
         <p class="font-sans text-sm text-center">(Non Grantable)</p>
         <div class="text-center">
           At:<b>Khirdi Ganesh</b>, Post : Yesgaon, Tal.Kopargaon, Dist.Ahmednagar (MS) 423601

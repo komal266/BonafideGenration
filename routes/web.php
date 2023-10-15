@@ -35,6 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
     //display students for transfer certificate
 	Route::get('transfer', [TransferController::class, 'alltc']);
 
+    Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
+
+    Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
+
+
     Route::post('stuform',[StudentController::class,'form'])->name('stu_form');
 
     Route::get('static-sign-in', function () {

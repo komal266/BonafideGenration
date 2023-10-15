@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('subcaste')->nullable();
             $table->integer('gr_no')->unique();
             $table->integer('lc_no')->nullable();
+            $table->integer('lc_status')->nullable();
             $table->integer('bona_no')->nullable();
             $table->string('aadhar_no')->unique()->nullable();
             $table->string('father_name')->nullable();

@@ -20,6 +20,15 @@ class StudentController extends Controller
             Echo "Error";
         }
     }
+    public function promoteAllStudents()
+{
+    // Increment the class attribute of all students by one
+    Student::query()->increment('class');
+
+    // Redirect back or to a specific page
+    return redirect()->back()->with('success', 'All students promoted to the next class successfully.');
+}
+
 
     public function form(){
         return view('students.stuform');

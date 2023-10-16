@@ -58,6 +58,12 @@
         <div class="col-md-4">
             <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
         </div>
+        <div>
+                <form method="POST" action="{{ route('promote') }}">
+                        @csrf
+                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Promote student to next class</button>
+                </form>
+        </div>
     </div>
 </div>
 <div class="card-body px-0 pt-0 pb-2">

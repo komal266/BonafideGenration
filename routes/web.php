@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
 
+    Route::post('/promote-all-students', [StudentController::class,'promoteAllStudents'])->name('promote');
+
 
     Route::post('stuform',[StudentController::class,'form'])->name('stu_form');
 

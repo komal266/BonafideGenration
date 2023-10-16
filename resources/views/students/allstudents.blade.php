@@ -19,6 +19,7 @@
 
                     </div>
                 </div>
+                <!-- Filter by Name -->
                 <div class="container">
     <div class="row mb-3">
         <!-- Filter by Name -->
@@ -60,6 +61,8 @@
         </div>
     </div>
 </div>
+
+                
 <div class="card-body px-0 pt-0 pb-2">
     <div class="table-responsive p-0">
         <table class="table align-items-center mb-0">
@@ -100,41 +103,53 @@
     </div>
 </div>
             </div>
-<script>
-$(document).ready(function() {
-    // Function to handle filter changes and apply filtering
-    function applyFilters() {
-        // Get the filter values
-        var nameFilter = $('#name-filter').val();
-        var classFilter = $('#class-filter').val();
-        var divisionFilter = $('#division-filter').val();
+            <script>
+    // Get the student rows
+    const studentRows = document.querySelectorAll('tbody tr');
 
-        // Perform filtering logic here based on the filter values
-        // You can use these values to filter your data dynamically
-        // For example, you can use jQuery to show/hide elements based on filters
+    // Get filter elements
+    const nameFilter = document.getElementById('name-filter');
+    const classFilter = document.getElementById('class-filter');
+    const divisionFilter = document.getElementById('division-filter');
 
-        // For demonstration purposes, you can log the filter values to the console
-        console.log('Name Filter: ' + nameFilter);
-        console.log('Class Filter: ' + classFilter);
-        console.log('Division Filter: ' + divisionFilter);
-    }
+    // Get the apply and reset filter buttons
+    const applyFiltersButton = document.getElementById('applyFilters');
+    const resetFiltersButton = document.getElementById('resetFilters');
 
-    // Event handler for the Apply Filters button
-    $('#applyFilters').click(function() {
-        applyFilters();
+    // Apply filters when the "Apply Filters" button is clicked
+    applyFiltersButton.addEventListener('click', () => {
+        const name = nameFilter.value.toLowerCase();
+        const selectedClass = classFilter.value.toLowerCase();
+        const selectedDivision = divisionFilter.value.toLowerCase();
+
+        studentRows.forEach(row => {
+            const studentName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+            const studentClass = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+            const studentDivision = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+            if (
+                studentName.includes(name) &&
+                (selectedClass === '' || studentClass.includes(selectedClass)) &&
+                (selectedDivision === '' || studentDivision.includes(selectedDivision))
+            ) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
     });
 
-    // Event handler for the Reset Filters button
-    $('#resetFilters').click(function() {
-        // Clear filter inputs and select "All" options
-        $('#name-filter').val('');
-        $('#class-filter').val('');
-        $('#division-filter').val('');
+    // Reset filters when the "Reset Filters" button is clicked
+    resetFiltersButton.addEventListener('click', () => {
+        nameFilter.value = '';
+        classFilter.value = '';
+        divisionFilter.value = '';
 
-        // Apply filters after resetting (you can remove this line if not needed)
-        applyFilters();
+        studentRows.forEach(row => {
+            row.style.display = 'table-row';
+        });
     });
-});
 </script>
+</html>
 
 @endsection

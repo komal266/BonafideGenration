@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/students/edit/', [StudentController::class, 'edit'])->name('editStudent');
 
-    Route::get('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
+    Route::post('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
 
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
 

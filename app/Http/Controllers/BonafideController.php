@@ -33,27 +33,29 @@ class BonafideController extends Controller
     }
 }
 
-    public function bonaprint()
-    {
-        try {
-            $studentId = $request->input('id');
-            $students = Student::find($studentId);
-            $maxBonaReceipt = Student::max('bona_no');
+public function bonaprint(Request $request)
+{
+    try {
+        $studentId = $request->input('id');
+        $student = Student::find($studentId);
 
-
-            $newReceiptNumber = $maxBonaReceipt + 1;
-
-
-            $students->bona_no = $newReceiptNumber;
-            $students->update();
-
-            $org = $this->getFirstOrganizationUser();
-
-            return view('bonafide.printbona', compact('students', 'org', 'newReceiptNumber'));
-        } catch (\Exception $e) {
-            // Handle any other exceptions that may occur during the query
+        if (!$student) {
+            // Handle the case where the student is not found
             return view('bonafide.stubona');
         }
+
+        $maxBonaReceipt = Student::max('bona_no');
+        $newReceiptNumber = $maxBonaReceipt + 1;
+
+        $student->bona_no = $newReceiptNumber;
+        $student->save(); // Use save() to update the student's record
+
+        return view('bonafide.printbona', compact('student', 'newReceiptNumber'));
+    } catch (\Exception $e) {
+        // Handle any other exceptions that may occur during the query
+        return view('bonafide.stubona');
     }
+}
+
 
 }

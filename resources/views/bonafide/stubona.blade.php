@@ -1,31 +1,64 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-<form method="POST" action="{{ route('bona-print') }}" target="_blank">
-    <input type="hidden" name="id" value="{{ $student->id }}">
-    <label for="firstName">Student's Name:
-        <span>{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</span></label>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4 mx-4">
+                <div class="card-header pb-0">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div>
+                            <h5 class="mb-0">Student Information</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('bona-print') }}" target="_blank">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $student->id }}">
 
+                        <div class="form-group">
+                            <label for="firstName">Student's Name:</label>
+                            <span>{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</span>
+                        </div>
 
-    <label for="class">Class:
-        <span>{{ $student->class }}</span></label>
+                        <div class="form-group">
+                            <label for="class">Class:</label>
+                            <span>{{ $student->class }}</span>
+                        </div>
 
-    <label for="div">Div:
-        <span>{{ $student->div }}</span></label>
+                        <div class="form-group">
+                            <label for="div">Div:</label>
+                            <span>{{ $student->div }}</span>
+                        </div>
 
-    <label for="rollNo">Roll No:
-        <span>{{ $student->roll_no }}</span></label>
-    <label for="category">Category:
-        <span>{{ $student->category }}</span></label>
+                        <div class="form-group">
+                            <label for="rollNo">Roll No:</label>
+                            <span>{{ $student->roll_no }}</span>
+                        </div>
 
-    <label for="dob">Date of Birth:
-        <span>{{ \Carbon\Carbon::parse($student->dob)->format('d/m/Y') }}</span></label>
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <span>{{ $student->category }}</span>
+                        </div>
 
-    <label for="academicYear">Academic Year:
-        <span>{{ $student->academic_year }}</span></label>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth:</label>
+                            <span>{{ \Carbon\Carbon::parse($student->dob)->format('d/m/Y') }}</span>
+                        </div>
 
-    <button type="submit">Print</button>
+                        <div class="form-group">
+                            <label for="academicYear">Academic Year:</label>
+                            <span>{{ $student->academic_year }}</span>
+                        </div>
 
+                        <button type="submit" class="btn btn-primary">Print</button>
+                    </form>
+                    <button onclick="window.history.back()" class="btn btn-primary">Back</button>
 
-</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

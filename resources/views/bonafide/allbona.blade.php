@@ -115,19 +115,26 @@ $(document).ready(function() {
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($student as $student)
+                                @foreach($student as $student1)
                                 <tr>
-                                    <td class="text-center">{{ $student->id }}</td>
-                                    <td class="text-center">{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
-                                    <td class="text-center">{{ $student->class }}</td>
-                                    <td class="text-center">{{ $student->div }}</td>
+                                    <td class="text-center">{{ $student1->id }}</td>
+                                    <td class="text-center">{{ $student1->first_name }} {{ $student1->middle_name }} {{ $student1->last_name }}</td>
+                                    <td class="text-center">{{ $student1->class }}</td>
+                                    <td class="text-center">{{ $student1->div }}</td>
                                     <td class="text-center">
-                                        <form action="post">View</form>
+                                        <form method="get" action="{{ route('Student_Bonafide') }}" style="display: inline;">
+
+                                            <input type="hidden" name="id" value="{{ $student1->id }}">
+                                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">View</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <div>
+                            {{ $student->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

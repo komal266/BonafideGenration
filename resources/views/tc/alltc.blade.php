@@ -131,6 +131,9 @@ $(document).ready(function() {
                                 @endforeach
                             </tbody>
                         </table>
+                        <div style="align-content: center">
+                            {{ $student->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

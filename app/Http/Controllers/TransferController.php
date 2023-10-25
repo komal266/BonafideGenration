@@ -12,7 +12,7 @@ class TransferController extends Controller
 {
     public function alltc()
     {
-        $student=Student::all();
+        $student=Student::paginate(15);
         return view ('tc.alltc',compact('student'));
     }
 }

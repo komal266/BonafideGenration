@@ -38,12 +38,10 @@ class StudentController extends Controller
 {
     // Find the student record by ID
     $student = Student::find($id);
-
     // Check if the student exists
     if (!$student) {
         return redirect()->route('students.allstudents')->with('error', 'Student not found');
     }
-
     // Display the view with the student's information and the edit form
     return view('students.viewstu', compact('student'));
 }

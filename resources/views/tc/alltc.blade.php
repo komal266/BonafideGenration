@@ -80,7 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($student as $student)
+                                @foreach ($students as $student)
                                 <tr>
                                     <td class="text-center">{{ $student->id }}</td>
                                     <td class="text-center">{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
@@ -93,8 +93,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div style="align-content: center">
-                            {{ $student->links() }}
+                        <div>
+                            {{ $students->links() }}
                         </div>
                     </div>
                 </div>

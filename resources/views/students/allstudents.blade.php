@@ -89,20 +89,26 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($student as $student)
+                @foreach ($student as $students)
                 <tr>
-                    <td class="text-center">{{ $student->id }}</td>
-                    <td class="text-center">{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
-                    <td class="text-center">{{ $student->class }}</td>
-                    <td class="text-center">{{ $student->div }}</td>
+                    <td class="text-center">{{ $students->id }}</td>
+                    <td class="text-center">{{ $students->first_name }} {{ $students->middle_name }} {{ $students->last_name }}</td>
+                    <td class="text-center">{{ $students->class }}</td>
+                    <td class="text-center">{{ $students->div }}</td>
                     <td class="text-center">
-                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">Edit</a>
+                        <form method="get" action="{{ route('editStudent') }}" style="display: inline;">
+                            <input type="hidden" name="id" value="{{ $students->id }}">
+                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Edit Student</button>
+                        </form>
 
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <div style="align-content: center">
+            {{ $student->links() }}
+        </div>
     </div>
 </div>
             </div>

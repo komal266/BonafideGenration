@@ -72,8 +72,7 @@ input[type="submit"]:hover {
                             <h5 class="mb-0">Add Student</h5>
                         </div>
                     </div>
-    <form method="POST" action="{{ route('stu_form') }}">
-
+    <form action="submit.php" method="post">
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" required><br><br>
 

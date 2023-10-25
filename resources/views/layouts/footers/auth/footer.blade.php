@@ -4,9 +4,10 @@
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div style="text-align: center;">
                     <div class="copyright text-center text-sm text-muted text-lg-start">
-                        © <script>
+                        ©&nbsp;<script>
+                            "&nbsp;"
                             document.write(new Date().getFullYear())
-                        </script>, Department of Information Technology, Sanjivani College of Engineering
+                        </script>,&nbsp;Department&nbsp;of&nbsp;Information&nbsp;Technology,&nbsp;Sanjivani&nbsp;College&nbsp;of&nbsp;Engineering&nbsp;
                     </div>
                 </div>
             </div>

@@ -22,11 +22,21 @@ class StudentController extends Controller
     }
     public function promoteAllStudents()
 {
-    // Increment the class attribute of all students by one
-    Student::query()->increment('class');
+    // Check if the students are currently in class 11 or lower
+    $maxClass = 11; // Set the maximum class for promotion to 11
+    $studentsToPromote = Student::where('class', '<=', $maxClass)->get();
+
+    if ($studentsToPromote->isEmpty()) {
+        return redirect()->back()->with('error', 'No students eligible for promotion.');
+    }
+
+    // Increment the class attribute of eligible students by one
+    $studentsToPromote->each(function ($student) {
+        $student->increment('class');
+    });
 
     // Redirect back or to a specific page
-    return redirect()->back()->with('success', 'All students promoted to the next class successfully.');
+    return redirect()->back()->with('success', 'Students promoted to the next class successfully.');
 }
 
 

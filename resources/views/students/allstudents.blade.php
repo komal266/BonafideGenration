@@ -60,11 +60,25 @@
             <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
         </div>
         <div>
-                <form method="POST" action="{{ route('promote') }}">
-                        @csrf
-                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Promote student to next class</button>
-                </form>
+            <form method="POST" action="{{ route('promote') }}" id="promote-form">
+                @csrf
+                <button type="button" id="promote-button" class="btn bg-gradient-primary btn-sm mb-0">Promote student to next class</button>
+            </form>
         </div>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const promoteForm = document.getElementById("promote-form");
+                const promoteButton = document.getElementById("promote-button");
+        
+                promoteButton.addEventListener("click", function () {
+                    if (confirm("Are you sure you want to promote all students to the next class?")) {
+                        // If the user confirms, submit the form
+                        promoteForm.submit();
+                    }
+                });
+            });
+        </script>
     </div>
 </div>
 

@@ -19,46 +19,46 @@
 
                     </div>
                 </div>
-                <!-- Filter by Name -->
-                <div class="container">
-    <div class="row mb-3">
-        <!-- Filter by Name -->
-        <div class="filter-item col-md-4">
-            <label for="name">Filter by Name:</label>
-            <input class="form-control" name="name" type="text" placeholder="Enter Name" id="name-filter" />
-        </div>
-
-        <!-- Filter by Class -->
-        <div class="filter-item col-md-4">
-            <label for="class">Filter by Class:</label>
-            <select class="form-control" name="class" id="class-filter">
-                <option value="">All Classes</option>
-                <option value="class1">Class 1</option>
-                <option value="class2">Class 2</option>
-                <!-- Add more class options here -->
-            </select>
-        </div>
-
-        <!-- Filter by Division -->
-        <div class="filter-item col-md-4">
-            <label for="division">Filter by Division:</label>
-            <select class="form-control" name="division" id="division-filter">
-                <option value="">All Divisions</option>
-                <option value="divisionA">Division A</option>
-                <option value="divisionB">Division B</option>
-                <!-- Add more division options here -->
-            </select>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
-        </div>
-
-        <div class="col-md-4">
-            <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
-        </div>
+               <!-- Filter by Name -->
+               <div class="container">
+                <div class="row mb-3">
+                    <!-- Filter by Name -->
+                    <div class="filter-item col-md-4">
+                        <label for="name">Filter by Name:</label>
+                        <input class="form-control" id="name-filter" name="name" type="text" placeholder="Enter Name" />
+                    </div>
+            
+                    <!-- Filter by Class -->
+                    <div class="filter-item col-md-4">
+                        <label for="class">Filter by Class:</label>
+                        <select class="form-control" id="class-filter" name="class">
+                            <option value="">All Classes</option>
+                            <option value="class1">1</option>
+                            <option value="class2">2</option>
+                            <!-- Add more class options here -->
+                        </select>
+                    </div>
+            
+                    <!-- Filter by Division -->
+                    <div class="filter-item col-md-4">
+                        <label for="division">Filter by Div:</label>
+                        <select class="form-control" id="division-filter" name="division">
+                            <option value="">All Divisions</option>
+                            <option value="divisionA">A</option>
+                            <option value="divisionB">B</option>
+                            <!-- Add more division options here -->
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                    </div>
+            
+                    <div class="col-md-4">
+                        <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
+                    </div>
         <div>
             <form method="POST" action="{{ route('promote') }}" id="promote-form">
                 @csrf
@@ -132,52 +132,57 @@
 </div>
             </div>
             <script>
-    // Get the student rows
-    const studentRows = document.querySelectorAll('tbody tr');
-
-    // Get filter elements
-    const nameFilter = document.getElementById('name-filter');
-    const classFilter = document.getElementById('class-filter');
-    const divisionFilter = document.getElementById('division-filter');
-
-    // Get the apply and reset filter buttons
-    const applyFiltersButton = document.getElementById('applyFilters');
-    const resetFiltersButton = document.getElementById('resetFilters');
-
-    // Apply filters when the "Apply Filters" button is clicked
-    applyFiltersButton.addEventListener('click', () => {
-        const name = nameFilter.value.toLowerCase();
-        const selectedClass = classFilter.value.toLowerCase();
-        const selectedDivision = divisionFilter.value.toLowerCase();
-
-        studentRows.forEach(row => {
-            const studentName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-            const studentClass = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-            const studentDivision = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
-
-            if (
-                studentName.includes(name) &&
-                (selectedClass === '' || studentClass.includes(selectedClass)) &&
-                (selectedDivision === '' || studentDivision.includes(selectedDivision))
-            ) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
-
-    // Reset filters when the "Reset Filters" button is clicked
-    resetFiltersButton.addEventListener('click', () => {
-        nameFilter.value = '';
-        classFilter.value = '';
-        divisionFilter.value = '';
-
-        studentRows.forEach(row => {
-            row.style.display = 'table-row';
-        });
-    });
-</script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Get the student rows
+                    const studentRows = document.querySelectorAll('tbody tr');
+            
+                    // Get filter elements
+                    const nameFilter = document.getElementById('name-filter');
+                    const classFilter = document.getElementById('class-filter');
+                    const divisionFilter = document.getElementById('division-filter');
+            
+                    // Get the apply and reset filter buttons
+                    const applyFiltersButton = document.getElementById('applyFilters');
+                    const resetFiltersButton = document.getElementById('resetFilters');
+            
+                    // Function to apply filters
+                    function applyFilters() {
+                        const name = nameFilter.value.toLowerCase();
+                        const selectedClass = classFilter.value;
+                        const selectedDivision = divisionFilter.value;
+            
+                        studentRows.forEach(row => {
+                            const studentName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                            const studentClass = row.querySelector('td:nth-child(3)').textContent;
+                            const studentDivision = row.querySelector('td:nth-child(4)').textContent;
+            
+                            if (
+                                studentName.includes(name) &&
+                                (selectedClass === '' || studentClass === selectedClass) &&
+                                (selectedDivision === '' || studentDivision === selectedDivision)
+                            ) {
+                                row.style.display = 'table-row';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    }
+            
+                    // Apply filters when the "Apply Filters" button is clicked
+                    applyFiltersButton.addEventListener('click', applyFilters);
+            
+                    // Reset filters when the "Reset Filters" button is clicked
+                    resetFiltersButton.addEventListener('click', () => {
+                        nameFilter.value = '';
+                        classFilter.value = '';
+                        divisionFilter.value = '';
+            
+                        studentRows.forEach(row => {
+                            row.style.display = 'table-row';
+                        });
+                    });
+                });
+            </script>
 </html>
 
 @endsection

@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('bona-print') }}" target="_blank">
+                    <form method="POST" action="{{ route('tcprint') }}" target="_blank">
                         @csrf
                         <input type="hidden" name="id" value="{{ $student->id }}">
 

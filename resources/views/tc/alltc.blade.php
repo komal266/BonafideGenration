@@ -79,21 +79,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($student as $student)
+                                @foreach ($students as $student)
                                 <tr>
                                     <td class="text-center">{{ $student->id }}</td>
                                     <td class="text-center">{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
                                     <td class="text-center">{{ $student->class }}</td>
                                     <td class="text-center">{{ $student->div }}</td>
                                     <td class="text-center">
-                                        <form action="post">View</form>
+                                        <form method="get" action="{{ route('Student_Transfer') }}" style="display: inline;">
+
+                                            <input type="hidden" name="id" value="{{ $student->id }}">
+                                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">View</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div style="align-content: center">
-                            {{ $student->links() }}
+                        <div>
+                            {{ $students->links() }}
                         </div>
                     </div>
                 </div>

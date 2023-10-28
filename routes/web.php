@@ -37,13 +37,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/students/edit/', [StudentController::class, 'edit'])->name('editStudent');
 
-    Route::get('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
+    Route::post('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
 
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
 
     Route::post('/promote-all-students', [StudentController::class,'promoteAllStudents'])->name('promote');
 
     Route::get('/bonafide/student',[BonafideController::class,'bonafideStudent'])->name('Student_Bonafide');
+
+    Route::get('viewTc',[TransferController::class,'viewtc'])->name('Student_Transfer');
+    Route::post('printTc',[TransferController::class,'printTC'])->name('tcprint');
 
     Route::post('stuform',[StudentController::class,'form'])->name('stu_form');
 

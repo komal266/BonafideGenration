@@ -87,7 +87,11 @@
                                     <td class="text-center">{{ $student->class }}</td>
                                     <td class="text-center">{{ $student->div }}</td>
                                     <td class="text-center">
-                                        <form action="post">View</form>
+                                        <form method="get" action="{{ route('Student_Transfer') }}" style="display: inline;">
+
+                                            <input type="hidden" name="id" value="{{ $student->id }}">
+                                            <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">View</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

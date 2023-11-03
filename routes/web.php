@@ -28,35 +28,29 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
-    //display all students
+    //Student Module
 	Route::get('students', [StudentController::class, 'index'])->name('students');
-    //display students for bonafide
-    Route::get('/bonafide', [BonafideController::class, 'allbona']);
-    //display students for transfer certificate
-	Route::get('transfer', [TransferController::class, 'alltc']);
+    // Route for editing a student
+    Route::get('/students/edit/{id}', [StudentController::class, 'edit'])->name('editStudent');
 
-    Route::get('/students/edit/', [StudentController::class, 'edit'])->name('editStudent');
-
-    Route::post('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
-
+    // Route for updating a student
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');
 
+    Route::post('newstudent',[StudentController::class,'form'])->name('stu_new');
+    Route::post('savenewstudent', [StudentController::class, 'store'])->name('new_stu_save');
     Route::post('/promote-all-students', [StudentController::class,'promoteAllStudents'])->name('promote');
-
+    //Bonafide Module
+    Route::get('/bonafide', [BonafideController::class, 'allbona']);
+    Route::post('bona-print', [BonafideController::class, 'bonaprint'])->name('bona-print');
     Route::get('/bonafide/student',[BonafideController::class,'bonafideStudent'])->name('Student_Bonafide');
 
+    //Transfer Certificate Module
+	Route::get('transfer', [TransferController::class, 'alltc']);
     Route::get('viewTc',[TransferController::class,'viewtc'])->name('Student_Transfer');
     Route::post('printTc',[TransferController::class,'printTC'])->name('tcprint');
 
-    Route::post('stuform',[StudentController::class,'form'])->name('stu_form');
 
-    Route::get('static-sign-in', function () {
-		return view('static-sign-in');
-	})->name('sign-in');
 
-    Route::get('static-sign-up', function () {
-		return view('static-sign-up');
-	})->name('sign-up');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
 
